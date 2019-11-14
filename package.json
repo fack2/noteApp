@@ -1,0 +1,27 @@
+{
+  "name": "noteApp",
+  "version": "1.0.0",
+  "description": "The app is an a simple small notepad allowing creating and editing text notes, which they categorized as a group of categories.",
+  "main": "index.js",
+  "dependencies": {
+    "env2": "^2.2.2",
+    "express": "^4.17.1",
+    "nodemon": "^1.19.4",
+    "pg": "^7.12.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fack2/noteApp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fack2/noteApp/issues"
+  },
+  "homepage": "https://github.com/fack2/noteApp#readme"
+}

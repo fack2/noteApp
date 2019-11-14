@@ -20,8 +20,8 @@ The app is an a simple small notepad allowing creating and editing text notes, w
 - Clone these repo:
 
 ```
-    git clone https://github.com/fack2/notesApp.git
-    cd notesApp
+    git clone https://github.com/fack2/noteApp.git
+    cd noteApp
 ```
 - Install node modules:
   ```

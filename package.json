@@ -1,0 +1,35 @@
+{
+  "name": "noteApp",
+  "version": "1.0.0",
+  "description": "The app is an a simple small notepad allowing creating and editing text notes, which they categorized as a group of categories.",
+  "main": "index.js",
+  "dependencies": {
+    "concurrently": "^5.0.0",
+    "env2": "^2.2.2",
+    "express": "^4.17.1",
+    "nodemon": "^1.19.4",
+    "pg": "^7.12.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node ./server/server.js",
+    "client-install": "cd client && npm install",
+    "client": "cd client && npm start",
+    "android": "cd client && npm run android",
+    "server": "nodemon ./server/server.js",
+    "build": "cd client && npm run build",
+    "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run android\"",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fack2/noteApp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fack2/noteApp/issues"
+  },
+  "homepage": "https://github.com/fack2/noteApp#readme"
+}

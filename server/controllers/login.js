@@ -3,11 +3,7 @@ const bcrypt = require('bcrypt')
 var jwt = require('jsonwebtoken')
 
 exports.get = (req, res) => {
-  console.log("login back end ");
-
   const { email, password } = req.body
-  console.log("email", email);
-
   checkUser(email)
     .then(data => {
       bcrypt.compare(password, data.password, (err, result) => {

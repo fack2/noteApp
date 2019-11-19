@@ -1,17 +1,12 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
 
 import React from 'react';
 import { createStore, applyMiddleware } from 'redux'
-import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
-import reducer from './redux/reducer'
+import reducer from './src/redux/reducer'
+import thunk from 'redux-thunk'
+import Dashboard from './src/components/Dashboard'
 import Login from './src/components/Login'
+
 import { createAppContainer } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 
@@ -21,25 +16,20 @@ import {
   Text,
 } from 'react-native';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
 const store = createStore(reducer, applyMiddleware(thunk))
+
 
 const navigationStak = createStackNavigator({
   Login: { screen: Login },
+  Dashboard: { screen: Dashboard },
+
+}, {
+  initialRouteName: 'Login'
 })
 
-let Navigation = createAppContainer(navigationStak);
+const Navigation = createAppContainer(navigationStak)
 
-
-
-const App: () => React$Node = () => {
+const App = () => {
   return (
     <Provider store={store}>
       <Navigation />

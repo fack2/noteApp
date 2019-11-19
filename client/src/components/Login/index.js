@@ -48,8 +48,8 @@ class Login extends Component {
     return (
       <View>
         <Text style={styles.title}>Welcome to Notepad</Text>
-        <TextInput placeholder="email" keyboardType="email-address" onChangeText={this.handleInputEmail} />
-        <TextInput secureTextEntry={true} placeholder="password" onChangeText={this.handleInputPassword} />
+        <TextInput placeholder="email" keyboardType="email-address" onChangeText={this.handleInputEmail} autoCapitalize='none' />
+        <TextInput secureTextEntry={true} placeholder="password" onChangeText={this.handleInputPassword} autoCapitalize='none' />
         <Button title={'login'} onPress={() => this.logedIn()} />
       </View>
     )

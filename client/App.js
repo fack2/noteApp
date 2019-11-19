@@ -1,15 +1,14 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
 
 import React from 'react';
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
-import reducer from './redux/reducer'
+import reducer from './src/redux/reducer'
+import thunk from 'redux-thunk'
+import Dashboard from './src/components/Dashboard'
+
+
+import { createAppContainer } from 'react-navigation'
+import { createStackNavigator } from 'react-navigation-stack'
 
 import {
   SafeAreaView,
@@ -17,24 +16,18 @@ import {
   Text,
 } from 'react-native';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
 
-const store = createStore(reducer)
+const navigationStak = createStackNavigator({
+  Dashboard: { screen: Dashboard }
+})
 
-const App: () => React$Node = () => {
+const store = createStore(reducer, applyMiddleware(thunk))
+const Navigation = createAppContainer(navigationStak)
+
+const App = () => {
   return (
-
     <Provider store={store}>
-      <SafeAreaView>
-        {/* //tags */}
-        <Text>HI</Text>
-      </SafeAreaView>
+      <Navigation />
     </Provider>
 
   );

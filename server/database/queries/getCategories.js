@@ -1,9 +1,8 @@
 
 const dbConnection = require('./../db_connection')
 
-const getCategories = () => {
+exports.getCategories = () => {
   return dbConnection
     .query('SELECT * FROM category')
 }
 
-module.exports = getCategories

@@ -18,10 +18,6 @@ class Login extends Component {
     errorMsg: "",
   };
 
-  componentDidMount = () => {
-
-  }
-
   handleInputEmail = email => {
     this.setState({ email });
   };
@@ -42,6 +38,7 @@ class Login extends Component {
       alert('email or password is not correct')
     }
   };
+
   render() {
 
 
@@ -55,7 +52,6 @@ class Login extends Component {
     )
   }
 }
-
 
 const styles = StyleSheet.create({
   title: {

@@ -2,7 +2,11 @@
 import axios from 'axios'
 
 export const getAllCategories = () => async (dispatch) => {
+  dispatch({
+    type: 'LOADING',
+    loading: true
 
+  })
 
   try {
 
@@ -13,6 +17,7 @@ export const getAllCategories = () => async (dispatch) => {
     dispatch({
       type: 'GET_ALL_CATEGORIES',
       data,
+      loading: false
     })
 
   }
@@ -20,6 +25,8 @@ export const getAllCategories = () => async (dispatch) => {
 
     dispatch({
       type: 'LOADING',
+      loading: true
+
     })
 
   }
@@ -28,15 +35,39 @@ export const getAllCategories = () => async (dispatch) => {
 
 
 export const checkLogin = (email, password) => async (dispatch) => {
+  dispatch({
+    type: 'LOADING',
+    loading: true
+  })
+
   try {
+
     const data = await axios.post("http://192.168.13.248:4000/api/login", { email, password })
     const login = data.data.msg
+   
     dispatch({
       type: 'LOGIN',
-      login
+      login,
+      loading: false
     })
   }
   catch {
-    console.log("ee", e);
+    dispatch({
+      type: 'LOADING',
+      loading: true,
+      login: false
+
+    })
   }
+}
+
+export const logOut = () => async (dispatch) => {
+
+  const data = await axios.get("http://192.168.13.248:4000/api/logout")
+  const logout = data.data.message;
+  dispatch({
+    type: 'LOGOUT',
+    logout
+  })
+
 }

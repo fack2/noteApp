@@ -31,12 +31,12 @@ class Login extends Component {
     this.props.checkLogin(email, password)
     const { login } = this.props;
     if (login) {
-      alert('Login')
-      this.props.navigation.navigate('Dashboard')
+      this.props.navigation.push('Dashboard')
     }
     else {
       alert('email or password is not correct')
     }
+
   };
 
   render() {
@@ -67,13 +67,14 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
   return {
-    login: state.login
+    login: state.login,
+    loading: state.loading,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    checkLogin
+    checkLogin,
   }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Login)

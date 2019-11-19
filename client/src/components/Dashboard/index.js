@@ -1,5 +1,5 @@
 import React from 'react'
-import { getAllCategories } from '../../redux/action'
+import { getAllCategories, logOut } from '../../redux/action'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -10,6 +10,7 @@ import {
   View,
   FlatList,
   Image,
+  Button
 } from 'react-native';
 
 class Dashboard extends React.Component {
@@ -21,29 +22,38 @@ class Dashboard extends React.Component {
     // this should done after someye complete her work
     // this.props.navigation.navigate('noteList')
   }
-  render() {
+  logedOut = () => {
+    this.props.logOut()
+    this.props.navigation.navigate('Login')
+  }
 
+  render() {
     return (
       <View>
+        {this.props.loading || !this.props.login ? <Text>loading
+        </Text>
+          :
+          (
 
-        {this.props.loading ? <Text>Loading</Text> : (
-          <>
-            <FlatList data={this.props.categories} renderItem={({ item, index }) =>
-              (
-                <View style={styles.photos_view}>
+            <>
+              <Button title={'logOut'} onPress={() => this.logedOut()} />
 
-                  <Image onClick={this.moveToList}
-                    style={styles.category_photo}
-                    source={{
-                      uri:
-                        item['image'],
-                    }}
-                  />
-                  <Text >{item["name"]}</Text>
-                </View>
-              )} />
-          </>
-        )
+              <FlatList data={this.props.categories} renderItem={({ item, index }) =>
+                (
+                  <View style={styles.photos_view}>
+
+                    <Image onClick={this.moveToList}
+                      style={styles.category_photo}
+                      source={{
+                        uri:
+                          item['image'],
+                      }}
+                    />
+                    <Text >{item["name"]}</Text>
+                  </View>
+                )} />
+            </>
+          )
         }
       </View>
 
@@ -69,13 +79,16 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
   return {
     categories: state.categories,
-    loading: state.loading
+    loading: state.loading,
+    logout: state.logout,
+    login: state.login
 
   }
 }
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     getAllCategories,
+    logOut,
   }, dispatch)
 }
 

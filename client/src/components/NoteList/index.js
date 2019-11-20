@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {Text, View, FlatList, StyleSheet,ScrollView} from 'react-native';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {getAllNotes} from '../../redux/action';
+import React, { Component } from 'react';
+import { Text, View, FlatList, StyleSheet, ScrollView } from 'react-native';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { getAllNotes } from '../../redux/action';
 
 class NoteList extends Component {
   componentDidMount = () => {
@@ -16,20 +16,20 @@ class NoteList extends Component {
         {this.props.loading ? (
           <Text>Loading</Text>
         ) : (
-          <>
-          <ScrollView>
-            <FlatList
-              data={this.props.notes}
-              renderItem={({item, index}) => (
-                <View style={styles.container}>
-                  <Text>{item['note_text']}</Text>
-                  <Text>{item['post_date']}</Text>
-                </View>
-              )}
-            />
-            </ScrollView>
-          </>
-        )}
+            <>
+              <ScrollView>
+                <FlatList
+                  data={this.props.notes}
+                  renderItem={({ item, index }) => (
+                    <View style={styles.container}>
+                      <Text>{item['note_text']}</Text>
+                      <Text>{item['post_date']}</Text>
+                    </View>
+                  )}
+                />
+              </ScrollView>
+            </>
+          )}
       </View>
     );
   }

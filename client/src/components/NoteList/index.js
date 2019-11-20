@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, FlatList, StyleSheet} from 'react-native';
+import {Text, View, FlatList, StyleSheet,ScrollView} from 'react-native';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {getAllNotes} from '../../redux/action';
@@ -17,6 +17,7 @@ class NoteList extends Component {
           <Text>Loading</Text>
         ) : (
           <>
+          <ScrollView>
             <FlatList
               data={this.props.notes}
               renderItem={({item, index}) => (
@@ -26,6 +27,7 @@ class NoteList extends Component {
                 </View>
               )}
             />
+            </ScrollView>
           </>
         )}
       </View>

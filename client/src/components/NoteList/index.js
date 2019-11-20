@@ -6,6 +6,7 @@ import {getAllNotes} from '../../redux/action';
 
 class NoteList extends Component {
   componentDidMount = () => {
+    //1 and 1 is category_id and user_id
     this.props.getAllNotes(1, 1);
   };
 

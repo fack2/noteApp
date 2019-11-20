@@ -10,7 +10,8 @@ import {
   View,
   FlatList,
   Image,
-  Button
+  Button,
+  TouchableOpacity
 } from 'react-native';
 
 class Dashboard extends React.Component {
@@ -19,8 +20,7 @@ class Dashboard extends React.Component {
     this.props.getAllCategories()
   }
   moveToList = () => {
-    // this should done after someye complete her work
-    // this.props.navigation.navigate('noteList')
+    this.props.navigation.navigate('NoteList')
   }
   logedOut = () => {
     this.props.logOut()
@@ -41,14 +41,15 @@ class Dashboard extends React.Component {
               <FlatList data={this.props.categories} renderItem={({ item, index }) =>
                 (
                   <View style={styles.photos_view}>
-
-                    <Image onClick={this.moveToList}
-                      style={styles.category_photo}
-                      source={{
-                        uri:
-                          item['image'],
-                      }}
-                    />
+                    <TouchableOpacity onPress={this.moveToList}>
+                      <Image
+                        style={styles.category_photo}
+                        source={{
+                          uri:
+                            item['image'],
+                        }}
+                      />
+                    </TouchableOpacity>
                     <Text >{item["name"]}</Text>
                   </View>
                 )} />

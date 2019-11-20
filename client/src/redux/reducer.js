@@ -1,13 +1,12 @@
-
 const initialState = {
   categories: [],
+  notes: [],
   loading: true,
   login: false,
   logout: false,
 }
 
 const reducer = (state = initialState, action) => {
-
   switch (action.type) {
     case 'GET_ALL_CATEGORIES':
       return {
@@ -31,7 +30,13 @@ const reducer = (state = initialState, action) => {
         ...state,
         logout: action.logout
       }
+    case 'GET_ALL_NOTES':
+      return {
+        ...state,
+        notes: state.notes.concat(action.data.data),
+        loading: false,
+      };
     default: return state
   }
-}
-export default reducer
+};
+export default reducer;

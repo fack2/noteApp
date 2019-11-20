@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
@@ -7,34 +6,27 @@ import thunk from 'redux-thunk'
 import Dashboard from './src/components/Dashboard'
 import Login from './src/components/Login'
 
-import { createAppContainer } from 'react-navigation'
-import { createStackNavigator } from 'react-navigation-stack'
+import NoteList from './src/components/NoteList';
 
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-} from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
-const store = createStore(reducer, applyMiddleware(thunk))
-
+import { View, StyleSheet, Text } from 'react-native';
 
 const navigationStak = createStackNavigator({
   Login: { screen: Login },
   Dashboard: { screen: Dashboard },
+  NoteList: { screen: NoteList },
+});
 
-}, {
-  initialRouteName: 'Login'
-})
-
-const Navigation = createAppContainer(navigationStak)
+const store = createStore(reducer, applyMiddleware(thunk));
+const Navigation = createAppContainer(navigationStak);
 
 const App = () => {
   return (
     <Provider store={store}>
       <Navigation />
     </Provider>
-
   );
 };
 

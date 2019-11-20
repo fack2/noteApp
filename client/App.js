@@ -13,8 +13,8 @@ import {createStackNavigator} from 'react-navigation-stack';
 import {View, StyleSheet, Text} from 'react-native';
 
 const navigationStak = createStackNavigator({
-  NoteList: {screen: NoteList},
   Dashboard: {screen: Dashboard},
+  NoteList: {screen: NoteList},
 });
 
 const store = createStore(reducer, applyMiddleware(thunk));

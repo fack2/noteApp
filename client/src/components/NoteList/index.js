@@ -1,35 +1,49 @@
 import React, {Component} from 'react';
-import axios from 'axios';
-import {Text, Button, View, FlatList} from 'react-native';
+import {Text, View, FlatList, StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {getAllNotes} from '../../redux/action';
 
 class NoteList extends Component {
   componentDidMount = () => {
-    this.props.getAllNotes(2, 1);
+    this.props.getAllNotes(1, 1);
   };
 
   render() {
-    return this.props.loading ? (
-      <Text>Loading</Text>
-    ) : (
+    return (
       <View>
-        <>
-          <FlatList
-            data={this.props.notes}
-            renderItem={({item, index}) => (
-              <View>
-                <Text>{item['note_text']}</Text>
-                <Text>sommm</Text>
-              </View>
-            )}
-          />
-        </>
+        {this.props.loading ? (
+          <Text>Loading</Text>
+        ) : (
+          <>
+            <FlatList
+              data={this.props.notes}
+              renderItem={({item, index}) => (
+                <View style={styles.container}>
+                  <Text>{item['note_text']}</Text>
+                  <Text>{item['post_date']}</Text>
+                </View>
+              )}
+            />
+          </>
+        )}
       </View>
     );
   }
 }
+const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+    flex: 1,
+    justifyContent: 'center',
+    borderRadius: 30,
+    borderWidth: 1,
+    width: 300,
+    marginLeft: 50,
+    marginBottom: 30,
+    borderColor: '#a7a7a7',
+  },
+});
 
 const mapStateToProps = state => {
   return {

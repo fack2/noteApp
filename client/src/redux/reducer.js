@@ -5,8 +5,6 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  console.log("action",action);
-  
   switch (action.type) {
     case 'GET_ALL_CATEGORIES':
       return {
@@ -15,10 +13,9 @@ const reducer = (state = initialState, action) => {
         loading: false,
       };
     case 'GET_ALL_NOTES':
-
       return {
         ...state,
-        notes: state.notes.concat(action.data),
+        notes: state.notes.concat(action.data.data),
         loading: false,
       };
     case 'LOADING':
